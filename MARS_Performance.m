@@ -1,4 +1,4 @@
-function [meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency] = MARS_Performance(trialDataAngles,velocitypoop,accelerationDataReported, trialphwcrashes)
+function [meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency,meanMagnitudeMARSAngle] = MARS_Performance(trialDataAngles,velocitypoop,accelerationDataReported, trialphwcrashes)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -24,7 +24,7 @@ function [meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crash
 
 %%CALCULATES MARS METRICS%%
 
-meanMARSAngle= [];  stdMARSAngle= [];   meanMARSVelocity= [];   meanMARSAcceleration=[]; crashFrequency= [];
+meanMARSAngle= [];  stdMARSAngle= [];   meanMARSVelocity= [];   meanMARSAcceleration=[]; crashFrequency= []; meanMagnitudeMARSAngle=[];
 
 
 meanMARSAngle = mean(trialDataAngles); %Calculates mean MARS angular position
@@ -39,6 +39,7 @@ meanMARSVelocity = mean(abs(velocitypoop)); %Calculates mean magnitude of angula
         normAccel(find(normAccel>300))=300;
         
 meanMARSAcceleration= mean(abs(normAccel)); %Calculates mean magnitude of angular acceleration
+meanMagnitudeMARSAngle= mean(abs(trialDataAngles));
 
 BalanceTime=length(trialDataAngles); %To find the balance time, we get the number of timepoints, with crashes being removed
 BalanceTimeSec=BalanceTime/50; %To get this in seconds, we divide by the sample rate of 50 samples/sec

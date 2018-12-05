@@ -1,4 +1,4 @@
-function [destabJoystick,anticipJoystick,meanVelJoystick,meanVelMovements,destabJoystickMoves, MeanAnticipatoryPhaseAngle] = Dynamic_Control(trialDataAngles,trialJoystickx, calculatedVelocities,trialtimepoop, trialph)
+function [destabJoystick,anticipJoystick,meanVelJoystick,meanVelMovements,destabJoystickMoves,anticipJoystickMoves, MeanAnticipatoryPhaseAngle] = Dynamic_Control(trialDataAngles,trialJoystickx, calculatedVelocities,trialtimepoop, trialph)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Last Updated May 24, 2018
@@ -71,13 +71,15 @@ deltaTime= trialtimepoop(2:end)-trialtimepoop(1:end-1);
 velJoystick= deltaTrialJoystickx./deltaTime;%Calculates velocity of Joystick movements
 velJoystickThresh=0.02; %Velocity of Joystick that is considered to be the initiation of a movement
 meanVelJoystick=mean(velJoystick);
+sizemeanVelJoystick= size(meanVelJoystick)
 %
 
 %%CALCULATES PERCENTAGE OF DESTABILIZING JOYSTICK MOVEMENTS%%
 n=1;
 velMovements=[]; %Vector that contains velocity of joystick movements
-startMoves=[];
-startind=[];
+startMoves=[]; %Angle of MARS at start of joystick movement
+startind=[]; %Movement number
+startJoy=[]; %Joystick position value at start of movement
 numMoves=1;
     while n<length(velJoystick)
     num=1;
@@ -98,13 +100,26 @@ numMoves=1;
     n=n+1;
     end
     end
-meanVelMovements= mean(velMovements); 
-%newcalculatedvelocities= calculatedVelocities(n); %Picks up MARS angular velocity at start of joystick movements    
-%destabMoves= length(find((startMoves(1:end)>angthres & -velMovements(1:end)>joythres & newcalculatedvelocities>velthres)|(startMoves(1:end)<-angthres & -velMovements(1:end)<-joythres & newcalculatedvelocities<-velthres)));
-%destabJoystickMoves= length(destabMoves)/BalanceTime; %Calculate fraction of destabilizing Joystick movements
-newcalculatedvelocities= 2;    
-destabMoves= 2;
-destabJoystickMoves= 2; %Calculate fraction of destabilizing Joystick movements
+    
+meanVelMovements= mean(velMovements);
+
+startMoves=startMoves';
+
+newcalculatedvelocities= calculatedVelocities(startind); %Picks up MARS angular velocity at start of joystick movements
+startjoystickpos= trialJoystickx(startind);
+destabMoves= length(find((startMoves(1:end)>angthres & -startjoystickpos(1:end)>joythres & newcalculatedvelocities>velthres)|(startMoves(1:end)<-angthres & -startjoystickpos(1:end)<-joythres & newcalculatedvelocities<-velthres)));
+destabJoystickMoves= 100*destabMoves/numMoves; %Calculate fraction of destabilizing Joystick movements
+
+%CALCULATES PERCENTAGE OF ANTICIPATORY JOYSTICK MOVES
+
+redposmoves=length(find(startMoves(1:end)>angthres & -startjoystickpos(1:end)>joythres & newcalculatedvelocities <-velthres));
+rednegmoves=length(find(startMoves(1:end)<-angthres & -startjoystickpos(1:end)<-joythres & newcalculatedvelocities >velthres));
+
+anticipJoystickMoves=100*(redposmoves+rednegmoves)/numMoves
+
+% newcalculatedvelocities= 2;    
+% destabMoves= 2;
+% destabJoystickMoves= 2; %Calculate fraction of destabilizing Joystick movements
 
 end
 

@@ -31,7 +31,7 @@ BalanceTime=length(trialJoystickx); %Calculates amount of time subject was in pr
 timeNearZero=length(find(trialJoystickx<.02 & trialJoystickx>-.02 & trialph ==3)); %Determines number of time points joystick was near zero
 %trialph==3 is when the operator has control over the MARS
 
-intermitJoy= timeNearZero/BalanceTime; %Calculates the percentage of time joystick is at 0 (-0.02 to 0.02 is considered acceptable range)
+intermitJoy= 100*timeNearZero/BalanceTime; %Calculates the percentage of time joystick is at 0 (-0.02 to 0.02 is considered acceptable range)
 
 end
 

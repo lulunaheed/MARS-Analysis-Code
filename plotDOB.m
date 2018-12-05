@@ -1,4 +1,4 @@
-function[meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency,meanJoyMag,stdJoyMag,intermitJoy,destabJoystick,anticipJoystick,meanVelJoystick,meanVelMovements,destabJoystickMoves, MeanAnticipatoryPhaseAngle]= plotDOB(summaryData, strParticipant, outDir, binCenters, instructionType, saveFile, doDistributionEstimate)
+function[meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency,meanMagnitudeMARSAngle,meanJoyMag,stdJoyMag,intermitJoy,destabJoystick,anticipJoystick,meanVelJoystick,meanVelMovements,destabJoystickMoves,anticipJoystickMoves, MeanAnticipatoryPhaseAngle]= plotDOB(summaryData, strParticipant, outDir, binCenters, instructionType, saveFile, doDistributionEstimate)
 
 global protocol protocolIndices dataIndices;
 
@@ -62,7 +62,7 @@ accelerationDataReported = deltaVelocities./ deltaTime(1:end); %Calculates accle
 
 %%CALCULATES MARS METRICS%%
 trialphwcrashes = td(:, dataIndices.indexTrialPhase);%Trial phases including Crashes
-[meanMARSAngle(trialIndex),meanMARSVelocity(trialIndex),meanMARSAcceleration(trialIndex),stdMARSAngle(trialIndex),crashFrequency(trialIndex)] = MARS_Performance(trialDataAngles,velocitypoop,accelerationDataReported, trialphwcrashes);
+[meanMARSAngle(trialIndex),meanMARSVelocity(trialIndex),meanMARSAcceleration(trialIndex),stdMARSAngle(trialIndex),crashFrequency(trialIndex),meanMagnitudeMARSAngle(trialIndex)] = MARS_Performance(trialDataAngles,velocitypoop,accelerationDataReported, trialphwcrashes);
 %
 
 %%CALCULATES JOYSTICK METRICS%%
@@ -70,7 +70,7 @@ trialphwcrashes = td(:, dataIndices.indexTrialPhase);%Trial phases including Cra
 %
 
 %%CALCULATES DYNAMIC CONTROL METRICS%%
-[destabJoystick(trialIndex),anticipJoystick(trialIndex),meanVelJoystick(trialIndex),meanVelMovements(trialIndex),destabJoystickMoves(trialIndex), MeanAnticipatoryPhaseAngle(trialIndex)]=Dynamic_Control(trialDataAngles,trialJoystickx, calculatedVelocities,trialtimepoop, trialph);
+[destabJoystick(trialIndex),anticipJoystick(trialIndex),meanVelJoystick(trialIndex),meanVelMovements(trialIndex),destabJoystickMoves(trialIndex), anticipJoystickMoves(trialIndex), MeanAnticipatoryPhaseAngle(trialIndex)]=Dynamic_Control(trialDataAngles,trialJoystickx, calculatedVelocities,trialtimepoop, trialph);
 %
 end
 end

@@ -147,9 +147,9 @@ end
                 %%%%added by me
                 close all
                 meanMARSAngle=[]; meanMARSVelocity=[]; meanMARSAcceleration=[];  stdMARSAngle=[];
-                crashFrequency=[];  meanJoyMag=[];  stdJoyMag=[];
-                intermitJoy=[]; destabJoystick=[];   anticipJoystick=[];   meanVelJoystick=[];
-                [meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency,meanJoyMag,stdJoyMag,intermitJoy, destabJoystick,anticipJoystick, meanVelJoystick, meanVelMovements, destabJoystickMoves, MeanAnticipatoryPhaseAngle]=plotDOB(summaryData, strParticipant, outputFolder, histogramBinCenters, instructionType, saveFile, doGaussianFitting);
+                crashFrequency=[];  meanJoyMag=[];  stdJoyMag=[]; meanMagnitudeMARSAngle=[];
+                intermitJoy=[]; destabJoystick=[];   anticipJoystick=[];   meanVelJoystick=[]; meanVelMovements= []; destabJoystickMoves= []; anticipJoystickMoves= []; MeanAnticipatoryPhaseAngle= [];
+                [meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency, meanMagnitudeMARSAngle,meanJoyMag,stdJoyMag,intermitJoy, destabJoystick,anticipJoystick, meanVelJoystick, meanVelMovements, destabJoystickMoves, anticipJoystickMoves, MeanAnticipatoryPhaseAngle]=plotDOB(summaryData, strParticipant, outputFolder, histogramBinCenters, instructionType, saveFile, doGaussianFitting);
                 
        
                 
@@ -159,6 +159,7 @@ end
                     alltrial_meanMARSAcceleration5(:,human)=meanMARSAcceleration;
                     alltrial_stdMARSAngle5(:,human)=stdMARSAngle;
                     alltrial_crashFrequency5(:,human)=crashFrequency;
+                    alltrial_meanMagnitudeMARSAngle5(:,human)=meanMagnitudeMARSAngle;
                     alltrial_meanJoyMag5(:,human)=meanJoyMag;
                     alltrial_stdJoyMag5(:,human)=stdJoyMag;
                     alltrial_intermitJoy5(:,human)= intermitJoy;
@@ -166,8 +167,9 @@ end
                     alltrial_anticipJoystick5(:,human)= anticipJoystick;
                     alltrial_meanVelJoystick5(:,human)=meanVelJoystick;
                     
-                    alltrial_meanVelMovements5(:,:,human)=meanVelMovements;
-                    alltrial_destabJoystickMoves5(:,:,human)=destabJoystickMoves;
+                    alltrial_meanVelMovements5(:,human)=meanVelMovements;
+                    alltrial_destabJoystickMoves5(:,human)=destabJoystickMoves;
+                    alltrial_anticipJoystickMoves5(:,human)=anticipJoystickMoves;
                     alltrial_MeanAnticipatoryPhaseAngle5(:,human)=MeanAnticipatoryPhaseAngle;
                     disp('a')
                 end
@@ -178,6 +180,7 @@ end
                     alltrial_meanMARSAcceleration6(:,human)=meanMARSAcceleration;
                     alltrial_stdMARSAngle6(:,human)=stdMARSAngle;
                     alltrial_crashFrequency6(:,human)=crashFrequency;
+                    alltrial_meanMagnitudeMARSAngle6(:,human)=meanMagnitudeMARSAngle;
                     alltrial_meanJoyMag6(:,human)=meanJoyMag;
                     alltrial_stdJoyMag6(:,human)=stdJoyMag;
                     alltrial_intermitJoy6(:,human)= intermitJoy;
@@ -185,8 +188,9 @@ end
                     alltrial_anticipJoystick6(:,human)= anticipJoystick;
                     alltrial_meanVelJoystick6(:,human)=meanVelJoystick;
                     
-                    alltrial_meanVelMovements6(:,:,human)=meanVelMovements;
-                    alltrial_destabJoystickMoves6(:,:,human)=destabJoystickMoves;
+                    alltrial_meanVelMovements6(:,human)=meanVelMovements;
+                    alltrial_destabJoystickMoves6(:,human)=destabJoystickMoves;
+                    alltrial_anticipJoystickMoves6(:,human)=anticipJoystickMoves;
                     alltrial_MeanAnticipatoryPhaseAngle6(:,human)=MeanAnticipatoryPhaseAngle;
                     disp('b')
                 end
