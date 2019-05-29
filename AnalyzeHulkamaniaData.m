@@ -156,8 +156,9 @@ switch programMode
 
 
     case {1 2 3}
-        %processDataHerpes(programMode, instructionType, protocolFolder, foldersToProcess, outputFolder, joystickButtonMandatory, savePlots, tDataInclusion, chairFacingWall);
-        processDataHerpes_NEW(programMode, instructionType, protocolFolder, foldersToProcess, outputFolder, joystickButtonMandatory, savePlots, tDataInclusion, chairFacingWall);
+        processDataHerpes(programMode, instructionType, protocolFolder, foldersToProcess, outputFolder, joystickButtonMandatory, savePlots, tDataInclusion, chairFacingWall);
+        %processDataHerpes_NEW(programMode, instructionType, protocolFolder, foldersToProcess, outputFolder, joystickButtonMandatory, savePlots, tDataInclusion, chairFacingWall);
+    
     case {9}
         processDataHerpes(programMode, instructionType, protocolFolder, foldersToProcess, outputFolder, joystickButtonMandatory, savePlots, tDataInclusion, chairFacingWall);
 
