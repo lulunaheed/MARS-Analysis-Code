@@ -147,9 +147,9 @@ end
                 %%%%added by me
                 close all
                 meanMARSAngle=[]; meanMARSVelocity=[]; meanMARSAcceleration=[];  stdMARSAngle=[];
-                crashFrequency=[];  meanJoyMag=[];  stdJoyMag=[]; meanMagnitudeMARSAngle=[];
-                intermitJoy=[]; destabJoystick=[];   anticipJoystick=[];   meanVelJoystick=[]; meanVelMovements= []; destabJoystickMoves= []; anticipJoystickMoves= []; MeanAnticipatoryPhaseAngle= [];
-                [meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency, meanMagnitudeMARSAngle,meanJoyMag,stdJoyMag,intermitJoy, destabJoystick,anticipJoystick, meanVelJoystick, meanVelMovements, destabJoystickMoves, anticipJoystickMoves, MeanAnticipatoryPhaseAngle]=plotDOB(summaryData, strParticipant, outputFolder, histogramBinCenters, instructionType, saveFile, doGaussianFitting);
+                crashFrequency=[];  meanJoyMag=[];  stdJoyMag=[]; meanMagnitudeMARSAngle=[]; stdRate=[]; meanRateDistsV=[];meanDrifts=[]; stdDists=[]; driftPercent=[];
+                intermitJoy=[]; destabJoystick=[];   anticipJoystick=[];   meanVelJoystick=[]; meanVelMovements= []; destabJoystickMoves= []; anticipJoystickMoves= []; MeanAnticipatoryPhaseAngle= []; startMoveMARSPosition= [];
+                [meanMARSAngle,meanMARSVelocity,meanMARSAcceleration,stdMARSAngle,crashFrequency, meanMagnitudeMARSAngle,stdRate,meanRateDistsV,meanDrifts, stdDists, driftPercent, meanJoyMag,stdJoyMag,intermitJoy, destabJoystick,anticipJoystick, meanVelJoystick, meanVelMovements, destabJoystickMoves, anticipJoystickMoves, MeanAnticipatoryPhaseAngle, startMoveMARSPosition]=plotDOB(summaryData, strParticipant, outputFolder, histogramBinCenters, instructionType, saveFile, doGaussianFitting,human);
                 
        
                 
@@ -160,6 +160,11 @@ end
                     alltrial_stdMARSAngle5(:,human)=stdMARSAngle;
                     alltrial_crashFrequency5(:,human)=crashFrequency;
                     alltrial_meanMagnitudeMARSAngle5(:,human)=meanMagnitudeMARSAngle;
+                    alltrial_stdRate5(:,human)=stdRate;
+                    alltrial_meanRateDistsV5(:,human)=meanRateDistsV;
+                    alltrial_meanDrifts5(:,human)=meanDrifts;
+                    alltrial_stdDists5(:,human)=stdDists;
+                    alltrial_driftPercent5(:,human)=driftPercent;
                     alltrial_meanJoyMag5(:,human)=meanJoyMag;
                     alltrial_stdJoyMag5(:,human)=stdJoyMag;
                     alltrial_intermitJoy5(:,human)= intermitJoy;
@@ -171,7 +176,7 @@ end
                     alltrial_destabJoystickMoves5(:,human)=destabJoystickMoves;
                     alltrial_anticipJoystickMoves5(:,human)=anticipJoystickMoves;
                     alltrial_MeanAnticipatoryPhaseAngle5(:,human)=MeanAnticipatoryPhaseAngle;
-                    disp('a')
+                    alltrial_startMoveMARSPosition5(:,human)=startMoveMARSPosition;
                 end
                 
                 if vivek==3 & day==2
@@ -181,6 +186,11 @@ end
                     alltrial_stdMARSAngle6(:,human)=stdMARSAngle;
                     alltrial_crashFrequency6(:,human)=crashFrequency;
                     alltrial_meanMagnitudeMARSAngle6(:,human)=meanMagnitudeMARSAngle;
+                    alltrial_stdRate6(:,human)=stdRate;
+                    alltrial_meanRateDistsV6(:,human)=meanRateDistsV;
+                    alltrial_meanDrifts6(:,human)=meanDrifts;
+                    alltrial_stdDists6(:,human)=stdDists;
+                    alltrial_driftPercent6(:,human)=driftPercent;
                     alltrial_meanJoyMag6(:,human)=meanJoyMag;
                     alltrial_stdJoyMag6(:,human)=stdJoyMag;
                     alltrial_intermitJoy6(:,human)= intermitJoy;
@@ -192,7 +202,7 @@ end
                     alltrial_destabJoystickMoves6(:,human)=destabJoystickMoves;
                     alltrial_anticipJoystickMoves6(:,human)=anticipJoystickMoves;
                     alltrial_MeanAnticipatoryPhaseAngle6(:,human)=MeanAnticipatoryPhaseAngle;
-                    disp('b')
+                    alltrial_startMoveMARSPosition6(:,human)=startMoveMARSPosition;
                 end
                 
         
